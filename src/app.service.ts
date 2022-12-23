@@ -14,7 +14,7 @@ const configuration = new Configuration({
 console.log(process.env.OPENAI_API_KEY);
 
 const openai = new OpenAIApi(configuration);
-const basePromptSuffix = ', medieval item inventory, white background, ';
+const basePromptSuffix = ', white background, ';
 
 @Injectable()
 export class AppService {
