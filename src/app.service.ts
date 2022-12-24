@@ -12,13 +12,13 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-const basePromptSuffix = ', white background, ';
+const basePromptSuffix = ' inventory item, single item, white background, ';
 
 @Injectable()
 export class AppService {
   async generate(input: string, type: string): Promise<string[]> {
     // Run first prompt
-    console.log(`API: ${input} ${basePromptSuffix} ${type}`);
+    console.log(`API: ${type} ${basePromptSuffix} ${input}`);
 
     let response: any = [];
     try {
