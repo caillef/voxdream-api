@@ -12,19 +12,20 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-const basePromptSuffix = ' inventory item, single item, white background, ';
+const basePromptSuffix = 'inventory item, single item, white background';
 
 @Injectable()
 export class AppService {
   async generate(input: string, type: string): Promise<string[]> {
     // Run first prompt
-    console.log(`API: ${type} ${basePromptSuffix} ${input}`);
+    const prompt = `${type} ${input}, ${basePromptSuffix}`
+    console.log(`API: ${prompt}`);
 
     let response: any = [];
     try {
       response = await openai.createImage({
-        prompt: `${input} ${basePromptSuffix}`,
-        n: 5,
+        prompt: prompt,
+        n: 3,
         size: '256x256',
       });
     } catch (err) {
